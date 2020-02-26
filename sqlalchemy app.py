@@ -74,7 +74,6 @@ def temperature():
     print("Server received request for 'Temperature' page...")
     session = Session(engine)
 
-    #another query I'm not particularly sure of, since again we'll have multiple results per date (less of a problem since not a dictionary this time), but a specific station was never specified either
     tempQuery = session.query(Measurement.date, Measurement.tobs).order_by(Measurement.date.asc()).filter(Measurement.date > firstdate).all()
     return jsonify(tempQuery)
 
